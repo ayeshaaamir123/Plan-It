@@ -166,8 +166,8 @@ echo'
 <div class="container2">
         <div class="card" style="width: 30rem;background:#F299F2BF; ">
             <div class="card-body font-theme">
-                '.$row3[$x-1]['plannerName'].'
-         <a class="view" href="login.php">View</a>
+                '.$row3[$x-1]['plannerName'].'     
+         <a class="view" href="planner.php">View</a>
                
             </div>
         </div>

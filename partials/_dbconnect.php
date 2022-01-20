@@ -4,7 +4,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "onlinetuitionmanagementsystem";
+$database = "planit";
 
 // create a connection
 $conn = mysqli_connect($server, $username, $password, $database);

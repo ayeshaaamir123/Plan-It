@@ -10,20 +10,28 @@
             $number = $_POST['numberEdit'];
     
             //UPDATING user's data according to the changes entered by them
-            $sql2a = "UPDATE user SET `firstName` = '$fname' WHERE `email_id` = 'izmaaziz.02@gmail.com'";
-            $sql2b = "UPDATE user SET `lastName` = '$lname' WHERE `email_id` = 'izmaaziz.02@gmail.com'";
-            $sql2c = "UPDATE user SET `contact` = '$number' WHERE `email_id` = 'izmaaziz.02@gmail.com'";
+            $sql1a = "UPDATE user SET `firstName` = '$fname' WHERE `email_id` = 'ayeshaaamir2001@gmail.com'";
+            $sql1b = "UPDATE user SET `lastName` = '$lname' WHERE `email_id` = 'ayeshaaamir2001@gmail.com'";
+            $sql1c = "UPDATE user SET `contact` = '$number' WHERE `email_id` = 'ayeshaaamir2001@gmail.com'";
             
-            mysqli_query($conn,$sql2a);
-            mysqli_query($conn,$sql2b);
-            mysqli_query($conn,$sql2c);
+            mysqli_query($conn,$sql1a);
+            mysqli_query($conn,$sql1b);
+            mysqli_query($conn,$sql1c);
             echo mysqli_error($conn);
         
     }
 
-    $sql = "SELECT * from user where email_id = 'izmaaziz.02@gmail.com'";
-    $result=mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result);
+    $sql2 = "SELECT * from user where email_id = 'ayeshaaamir2001@gmail.com'";
+    $result=mysqli_query($conn,$sql2);
+    $row2 = mysqli_fetch_array($result);
+
+    $sql3="SELECT * from planner where email_id = 'ayeshaaamir2001@gmail.com'";
+    $result=mysqli_query($conn,$sql3);
+    $count = mysqli_num_rows($result);
+    while ($row_element = mysqli_fetch_array($result)){
+           $row3[]=$row_element;
+    }    
+   // print_r($row3) 
 
 ?>
 
@@ -113,16 +121,16 @@
                     <!-- Showing Personal Information from database -->
                     <td>
 
-                         <?php echo $row['firstName'];?> 
+                         <?php echo $row2['firstName'];?> 
                     </td>
                     <td>
-                        <?php echo $row['lastName'];?>
+                        <?php echo $row2['lastName'];?>
                     </td>
                     <td>
-                        <?php echo $row['email_id']; ?> 
+                        <?php echo $row2['email_id']; ?> 
                     </td>
                     <td>
-                        <?php echo $row['contact']; ?> 
+                        <?php echo $row2['contact']; ?> 
                     </td>
                     
                     <td> <button style=" background-color:#10102b; border-color:#10102b;" name='edit' data-toggle="modal" data-target="#editModal"
@@ -149,17 +157,21 @@
 
 </div>
 
+<?php
 
-
+$x=1 ;                                  
+for ($x; $x <= $count; $x++){ 
+    
+echo'
 <div class="container2">
         <div class="card" style="width: 30rem;background:#F299F2BF; ">
             <div class="card-body font-theme">
-                Planner
-                <a class="view" href="login.php">View</a>
+                '.$row3[$x-1]['plannerName'].'     
+         <a class="view" href="planner.php">View</a>
                
             </div>
         </div>
-</div>
+</div>';}?>
 </div>
 </body>
 

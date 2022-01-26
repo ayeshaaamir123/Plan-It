@@ -47,110 +47,120 @@
             Task Planner
         </h2>
     </div>
-    <div class="container2" style="width: 90%; margin: auto;">
-        <div>
-            <div class="container-taskbar">
+
+    <!--TASK BAR -->
+    <div class="container2 d-flex flex-row justify-content" style="margin: auto;">
+        <div class="p-2">
+            <div class="container-taskbar ">
+                Task Performance
+            </div>
+            <div class="d-flex flex-row justify-content-between " style=" width: 200px; margin: auto;">
+                <div class="p-2">1/1/2021</div>
+                <div class="p-2" >4/1/2021</div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="container-taskbar" style="background:#F299F2BF;">
                 Task 1
             </div>
-            <div class="task-date" style="width: 200px; margin: auto;">
-                <div>1/1/2021</div>
-                <div style="padding-left: 4rem;">4/1/2021</div>
+            <div class="d-flex flex-row justify-content-between" style="width: 200px;margin: auto;">
+                <div class="p-2">1/1/2021</div>
+                <div class="p-2">4/1/2021</div>
             </div>
         </div>
-        <div>
-            <div class="container-taskbar" style="margin-left: 1rem; background: #F299F2BF;">
-                Task 2
+        <div class="p-2">
+            <div class="container-taskbar" style="background: #41C357CF  ;">
+                Task 1
             </div>
-            <div class="task-date" style="width: 180px; margin: auto;">
-                <div>1/1/2021</div>
-                <div style="padding-left: 4rem;">4/1/2021</div>
-            </div>
-        </div>
-        <div>
-            <div class="container-taskbar" style="margin-left: 1rem;background:#41C357CF;">
-                Task 3
-            </div>
-            <div class="task-date" style="width: 180px; margin: auto;">
-                <div>1/1/2021</div>
-                <div style="padding-left: 4rem;">4/1/2021</div>
+            <div class="d-flex flex-row justify-content-between" style="width: 200px;margin: auto; ">
+                <div class="p-2">1/1/2021</div>
+                <div class="p-2">4/1/2021</div>
             </div>
         </div>
-        <div>
-            <div class="container-taskbar" style="margin-left: 1rem;background: #FFBF66DE";>
-                Task 4
+        <div class="p-2">
+            <div class="container-taskbar" style="background: #FFBF66DE;">
+                Task 1
             </div>
-            <div class="task-date" style="width: 180px; margin: auto;">
-                <div>1/1/2021</div>
-                <div style="padding-left: 4rem;">4/1/2021</div>
-            </div>
-        </div>
-        <div>
-            <div class="container-taskbar" style="margin-left: 1rem;">
-                Task 5
-            </div>
-            <div class="task-date" style="width: 180px; margin: auto;">
-                <div>1/1/2021</div>
-                <div style="padding-left: 4rem;">4/1/2021</div>
+            <div class="d-flex flex-row justify-content-between" style="width: 200px; margin: auto; ">
+                <div class="p-2">1/1/2021</div>
+                <div class="p-2">4/1/2021</div>
             </div>
         </div>
-        
-
-        
+         
     </div>
-    <div style="display: flex; padding-top: 4rem;">
-     <div>  
-    <div class="card" style="width:500px;
-height: 180px;
-left: 4rem; border-radius: 20;background: linear-gradient(180deg, #3ED6BF 0%, rgba(62, 214, 191, 0.8) 100%);" 
 
->
-        <div class="card-body">
-            <div style="display: flex;">
-                <h5 class="card-title">Task 1</h5>
-                <h6 style="position: relative; margin-left: 13rem;">1/1/2022</h6>
-                <h6  style="position: relative; margin-left: 2rem; color: rgb(255, 255, 255);">1:00AM</h6>
-            </div>
-            
-            <h5 class="card-subtitle mb-2" style="color: rgb(255, 255, 255); font-size: 16px;">Create Frontend</h5>
-<hr>
-            <div class="btn-group"role="group" aria-label="Basic example" >
-                <button type="button" class="btn btn-secondary" style="background: #19524b; ">Done</button>
-                <button type="button" class="btn btn-secondary" style="background: #19524b; ">Missed</button>
-            </div>
+    <!-- MAIN BODY WITH TASKS AND CHART -->
 
-        </div>
-        </div>
-        <br>
-        <div class="card" style="width:500px;
-        height: 180px;
-        left: 4rem; border-radius: 20;background:#F299F2BF">
-            <div class="card-body">
-                <div style="display: flex;">
-                    <h5 class="card-title">Task 1</h5>
-                    <h6 style="position: relative; margin-left: 13rem;">1/1/2022</h6>
-                    <h6 style="position: relative; margin-left: 2rem; color: rgb(255, 255, 255);">1:00AM</h6>
-                </div>
-        
-                <h5 class="card-subtitle mb-2" style="color: rgb(255, 255, 255); font-size: 16px;">Create Frontend</h5>
-                <hr>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary" style="background: #520b52bf; ">Done</button>
-                    <button type="button" class="btn btn-secondary" style="background: #520b52bf; ">Missed</button>
-                </div>
-        
-            </div>
-        </div>
-        
+    <div class= "d-flex" style="padding-top: 4rem;">
+        <!-- TASKS -->
+        <div class="p-2">  
+            <div class="card" style="width:500px;height: 180px;left: 4rem; border-radius: 20;background: linear-gradient(180deg, #3ED6BF 0%, rgba(62, 214, 191, 0.8) 100%);" >
+                <div class="card-body">
+                    <div class= "d-flex felx-row justify-content-between">
+                        <h5 class="card-title p-2">Task Performance Bleh</h5>
+                        <h6 class="p-2" >1/1/2022</h6>
+                        <h6 class= "p-2" style="color: rgb(255, 255, 255);">1:00AM</h6>
+                    </div>
             
+                    <h5 class="card-subtitle ml-3" style="color: rgb(255, 255, 255); font-size: 16px;">Create Frontend</h5>
+                    <hr>
+                    <div class="btn-group"role="group" aria-label="Basic example" >
+                        <button type="submit" class="btn btn-secondary" style="background: #19524b; ">Done</button>
+                        
+                        <button type="submit" class="btn btn-secondary" style="background: #19524b; ">Edit</button>
+                        <button type="submit" class="btn btn-secondary" style="background: #19524b; ">Delete</button>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="card"
+                style="width:500px;height: 180px;left: 4rem; border-radius: 20;background: linear-gradient(180deg, #3ED6BF 0%, rgba(62, 214, 191, 0.8) 100%);">
+                <div class="card-body">
+                    <div class="d-flex felx-row justify-content-between">
+                        <h5 class="card-title p-2">Task Performance Bleh</h5>
+                        <h6 class="p-2">1/1/2022</h6>
+                        <h6 class="p-2" style="color: rgb(255, 255, 255);">1:00AM</h6>
+                    </div>
+            
+                    <h5 class="card-subtitle ml-3" style="color: rgb(255, 255, 255); font-size: 16px;">Create Frontend</h5>
+                    <hr>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary" style="background: #19524b; ">Done</button>
+                        <button type="button" class="btn btn-secondary" style="background: #19524b; ">Missed</button>
+                    </div>
+            
+                </div>
+            </div>
+            <br>
+            <div class="card"
+                style="width:500px;height: 180px;left: 4rem; border-radius: 20;background: linear-gradient(180deg, #3ED6BF 0%, rgba(62, 214, 191, 0.8) 100%);">
+                <div class="card-body">
+                    <div class="d-flex felx-row justify-content-between">
+                        <h5 class="card-title p-2">Task Performance Bleh</h5>
+                        <h6 class="p-2">1/1/2022</h6>
+                        <h6 class="p-2" style="color: rgb(255, 255, 255);">1:00AM</h6>
+                    </div>
+            
+                    <h5 class="card-subtitle ml-3" style="color: rgb(255, 255, 255); font-size: 16px;">Create Frontend</h5>
+                    <hr>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary" style="background: #19524b; ">Done</button>
+                        <button type="button" class="btn btn-secondary" style="background: #19524b; ">Missed</button>
+                    </div>
+            
+                </div>
+            </div>
             
         </div>
     
-        
-    <div class="chart">
-        <h1>Pie chart View</h1>
     
-        <div id="piechart"></div>
-    </div>
+    <!-- PIE CHART -->
+        <div class="chart p-2">
+            <h1>Pie chart View</h1>
+    
+            <div id="piechart"></div>
+        </div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
     <script type="text/javascript">
@@ -179,8 +189,17 @@ left: 4rem; border-radius: 20;background: linear-gradient(180deg, #3ED6BF 0%, rg
 
 
     </script>
+    </div>
+    <br>
+    <!-- ADD BUTTON -->
+    <div class="card mx-auto text-center" style="width: 30rem;background:#F299F2BF; ">
+        <div class="card-body font-theme">
+            Add Task
+            <button type="submit" name="submit" class="view">Login</button>
         </div>
-   
+    </div>
+    <br>
+
 
 
 </body>

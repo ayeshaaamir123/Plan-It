@@ -1,4 +1,5 @@
 
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="#"><b>Plan It</b></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -16,7 +17,6 @@
 			<li class="nav-item">
 				<a class="nav-link" href="#">Contact Us</a>
 			</li>
-
 		</ul>
 	</div>
 </nav>

@@ -1,6 +1,6 @@
 <?php
      include 'partials/_dbconnect.php';
- 
+    $showAlert= false;
      if ($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['savechanges']=='pressed'){
          //figure out: how to get templatetype from the button clicked and how to add alerts
         // $templateType = $_POST['template'];
@@ -9,44 +9,68 @@
 
          
         $taskcount=sizeof($_POST['taskName']);
-      
+        // checking if first task is completely filled
         if($taskcount!=1 || ($_POST['taskName'][0]!='' && $_POST['taskDescription'][0]!='' && $_POST['startTask'][0]!= '' && $_POST['endTask'][0]!= '')){
-            // finding out whether the user already has any planners. If they do, add 1 to the number of planners and set that as the planner_id
-            $sql1= "SELECT * from `planit`.`planner` where email_id = 'ayeshaaamir2001@gmail.com';";
-            $result=mysqli_query($conn,$sql1);
-            $count = mysqli_num_rows($result);
-            $planner_id= $count+1;
+            
+        
             $plannerName= $_POST['plannerName'];
-            $sql2= "INSERT INTO `planit`.`planner` (`planner_id`,`plannerName`, `templateType`, `email_id`) VALUES ('$planner_id', '$plannerName', 'business', 'ayeshaaamir2001@gmail.com');";
-            mysqli_query($conn,$sql2);
+            $sql4= "SELECT * from `planit`.`planner` where plannerName = '$plannerName';";
+            $result2= mysqli_query($conn, $sql4);
+            $count_planner= mysqli_num_rows($result2);
+            if ($count_planner==0){
 
-            //adding tasks for the planner
-         
-            $y = 1;
-            for ($x = 1; $x <=$taskcount; $x++) {
-             
-             
-                $taskName= $_POST['taskName'][$x-1];
-                $taskDescription= $_POST['taskDescription'][$x-1];
-                $startTask= $_POST['startTask'][$x-1];
-                $endTask= $_POST['endTask'][$x-1];
-             
-             
-                if ($taskName!='' && $taskDescription!='' && $startTask!='' && $endTask!=''){
+                $sql1= "SELECT * from `planit`.`planner` where email_id = 'ayeshaaamir2001@gmail.com';";
+                $result=mysqli_query($conn,$sql1);
+                $count = mysqli_num_rows($result);
+                $planner_id= $count+1;
+                $sql2= "INSERT INTO `planit`.`planner` (`planner_id`,`plannerName`, `templateType`, `email_id`) VALUES ('$planner_id', '$plannerName', 'business', 'ayeshaaamir2001@gmail.com');";
+                mysqli_query($conn,$sql2);
 
-                    $taskID= $y ;
-                    $sql3 = "INSERT INTO `planit`.`task` (`taskID`,`planner_id`, `email_id`, `taskName`, `taskDescription`, `startTask`, `endTask`) VALUES ('$taskID', '$planner_id', 'ayeshaaamir2001@gmail.com', '$taskName', '$taskDescription', '$startTask', '$endTask' );";
-                    mysqli_query($conn,$sql3);
-                    $y++;
-                }
-                else{
-                    echo 'TASK '.$x.' NOT ADDED';
-                }
+                //adding tasks for the planner
+
+                $y = 1;
+                for ($x = 1; $x <=$taskcount; $x++) {
              
+             
+                    $taskDescription= $_POST['taskDescription'][$x-1];
+                    //formatting dates
+                    $startdate=$_POST['startTask'][$x-1];
+                    $startdate= explode("-", $startdate);
+                    list($year, $month, $day)= $startdate;
+                    $startTask= $year.'-'.$month."-".$day;
+                    
+                    $enddate= $_POST['endTask'][$x-1];
+                    $enddate= explode("-", $enddate);
+                    list($year, $month, $day)= $enddate;
+                    $endTask= $year.'-'.$month."-".$day;
+                    
+                    $taskName= $_POST['taskName'][$x-1];
+                    
+                    //checking if all fields are filled of a particular task
+                    if ($taskName!='' && $taskDescription!='' && $startTask!='' && $endTask!=''){
+                        $taskID= $y ;
+                        $sql3 = "INSERT INTO `planit`.`task` (`taskID`,`planner_id`, `email_id`, `taskName`, `taskDescription`, `startTask`, `endTask`) VALUES ('$taskID', '$planner_id', 'ayeshaaamir2001@gmail.com', '$taskName', '$taskDescription', '$startTask', '$endTask' );";
+                        mysqli_query($conn,$sql3);
+                        $y++;
+                        
+                    }
+                    else{
+                    
+                        $showAlert="Task ". $x." could not be added to the planner.";
+                        
+                    }
+             
+                 }
+
             }
+            else{
+                $showAlert= "Planner with a similar name already exists. Try changing the name of your planner!";
+            }
+              
         }
         else{
-            echo 'PLEASE ENTER COMPLETE DETAILS FOR THE TASK';
+            
+            $showAlert='Planner not created. Please enter complete details for the task!';
         }
      }
     
@@ -65,6 +89,16 @@
 
 
 <?php require '<partials/_header.php';?>
+<?php
+if($showAlert){
+    echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Error!</strong> '.$showAlert.'
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
+}
+?>
 
 <!-- MODAL -->
 <div class="font-theme">
@@ -101,10 +135,10 @@
                                             <input type="text" name="taskDescription[]" class="form-control m-input" placeholder="Enter Task Description" autocomplete="off">
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off">
+                                            <input type="date" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off">
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off">
+                                            <input type="date" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off">
                                         </div>
                                     </div>
                                     <div id="newTask"></div>

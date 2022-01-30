@@ -4,7 +4,7 @@ include 'partials/_dbconnect.php';
 session_start();
 
 //$user =$_SESSION["email_id"];
-
+$showReminder=false;
 $user='ayeshaaamir2001@gmail.com';
 $planner_id=$_POST['planner_id'];
 $sql1="SELECT * from task where planner_id='$planner_id' and email_id='$user';";
@@ -37,8 +37,25 @@ $color=['#3ed6bf','#F299F2BF','#41C357CF','#FFBF66DE'];
 <body>
 
 <?php require '<partials/_header.php';?>
-
+<?php 
+for($x=1; $x<=$count; $x++){
+    $today = date("Y-m-d");
+    $endTaskDate=$tasks[$x-1]['endTask'];
+    if ($endTaskDate<$today){
+        $showReminder= "Your task '".$tasks[$x-1]['taskName']."' has exceeded the deadline";
+        echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Reminder!</strong> '.$showReminder.'
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>';
+    }
+}
+
+?>
+
+
     <!-- edit modal -->
     <div class="font-theme">
       <div class="modal fade" id="modaledittask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -208,7 +225,7 @@ $color=['#3ed6bf','#F299F2BF','#41C357CF','#FFBF66DE'];
                 <div class="card-body">
                     <div class= "d-flex felx-row justify-content-between">
                         <h5 class="card-title p-2"> '.$tasks[$x-1]['taskName'].'</h5>
-                        <h6 class="p-2" >'.$tasks[$x-1]['startTask'].'</h6>
+                        <h6 class="p-2" >'.$tasks[$x-1]['endTask'].'</h6>
                        
                     </div>
             

@@ -5,6 +5,7 @@ session_start();
 $email_id=$_SESSION['EmailId'];
 $planner_id=$_POST['savechanges'];
 if ($_SERVER["REQUEST_METHOD"] == 'POST'){
+    //getting all the tasks of the particular planner
     $sql1="SELECT * from `planit`.`task` where email_id = '$email_id' and planner_id='$planner_id';";
     $result=mysqli_query($conn,$sql1);
     $taskID = mysqli_num_rows($result);

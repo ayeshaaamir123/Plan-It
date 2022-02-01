@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $startTask=$_POST['editstartTask'];
         $endTask=$_POST['editendTask'];
       
-       
+       // updating task information entered by user in the fields
         $sql="UPDATE task SET `taskName` = '$taskName',`taskDescription`='$taskDescription',`startTask`='$startTask',`endTask`='$endTask' WHERE `email_id`= '$email_id' AND `planner_id`='$planner_id' AND `taskID`='$taskID';";
         mysqli_query($conn,$sql);
         echo mysqli_error($conn);

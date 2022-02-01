@@ -6,9 +6,6 @@
     $login=$_SESSION['Login'];
     $showAlert= false;
 
-   
-   
-   // print_r($row3) 
 
 
     if ($_SERVER["REQUEST_METHOD"] == 'POST') {

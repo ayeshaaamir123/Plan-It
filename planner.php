@@ -7,7 +7,7 @@ $showReminder=false;
 $email_id=$_SESSION['EmailId'];;
 if (($_SERVER["REQUEST_METHOD"] == 'POST') && isset($_POST['planner_id'])) {
 $planner_id=$_POST['planner_id'];
-//$_SESSION['planner_id']=$planner_id;
+
 }
 else{
     $planner_id=$_GET['planner_id'];
@@ -18,14 +18,14 @@ $result=mysqli_query($conn,$sql1);
     while ($row_element = mysqli_fetch_array($result)){
            $tasks[]=$row_element;
     }  
-   // print_r($tasks) ;  
+   
 
 $sql2="SELECT * from planner where planner_id='$planner_id' and email_id='$email_id';";
 $result=mysqli_query($conn,$sql2);
 $plan = mysqli_fetch_array($result);
 
 
-
+//lists to set colours of task bars and task cards
 $color=['#F299F2BF','#3ed6bf','#41C357CF','#FFBF66DE'];
 $buttoncolor=['#690769','#19524b', '#047216', '#A4560E'];
 
@@ -44,6 +44,7 @@ $buttoncolor=['#690769','#19524b', '#047216', '#A4560E'];
 
 <?php require '<partials/_header2.php';?>
 <?php 
+// reminders for exceeded deadlines of tasks
 for($x=1; $x<=$count; $x++){
     $today = date("Y-m-d");
     $endTaskDate=$tasks[$x-1]['endTask'];
@@ -124,7 +125,7 @@ for($x=1; $x<=$count; $x++){
         </h2>
     </div>
     <?php
-    
+    // if planner does not have any tasks ask user whether they want to delete the planner or add a task
     if ($count==0){
         echo'
         <div class="card w-50 mx-auto mt-5" style="  border: 2px solid rgba(196, 182, 218, 0.87);">
@@ -146,6 +147,7 @@ for($x=1; $x<=$count; $x++){
             </div>
         ';
     }
+    //if tasks exist in the planner
     else{
 
         echo '
@@ -239,6 +241,8 @@ for($x=1; $x<=$count; $x++){
      ?>
 
 <?php
+//pie chart functionality
+// creating task days list by finding diff between the start and end dates
     $taskdays=[];
     for ($x=1; $x<=$count; $x++){
         $date1= date_create($tasks[$x-1]['endTask']);
@@ -249,7 +253,7 @@ for($x=1; $x<=$count; $x++){
         $days=intval($diff);
         $taskdays[]=$days;
     }
-    
+    // creating pie chart array to be used in the pie chart api
     $piearray=[['Task','Days']];
     for ($x=1; $x<=$count; $x++){
         $piearray[]=[$tasks[$x-1]['taskName'], $taskdays[$x-1]];
@@ -268,13 +272,8 @@ for($x=1; $x<=$count; $x++){
         // Draw the chart and set the chart values
         function drawChart() {
             var piearray = <?php echo json_encode($piearray); ?>;
-            var data = google.visualization.arrayToDataTable(piearray);
-
-            // Optional; add a title and set the width and height of the chart
-            
+            var data = google.visualization.arrayToDataTable(piearray);        
             var options = { 'title': 'Planner', 'width': 550, 'height': 400 };
-
-            // Display the chart inside the <div> element with id="piechart"
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, options);
         }

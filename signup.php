@@ -25,11 +25,12 @@ $sql = "SELECT * from user where email_id = '$email' ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $count = mysqli_num_rows($result);
-
+// if account does not already exist in the database
 if ($count == 0) {
+	// if password fulfills all the password requirements
 	if($uppercase && $lowercase && $number && $specialChars && strlen($password) >=8) {
 
-        
+        //if password and confirm password match
 		if ($password == $cpassword){
 			$query1="INSERT INTO `user` (`email_id`, `firstName`, `lastName`, `contact`, `password`) VALUES ('$email', '$fname', '$lname', '$contact', '$password')";
 			mysqli_query($conn, $query1);

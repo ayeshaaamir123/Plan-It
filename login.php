@@ -21,13 +21,14 @@ $sql = "SELECT * from user where email_id = '$email' ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $count = mysqli_num_rows($result);
-//echo $count;
 
+//if account exists in the database
 if ($count == 1) {
     $sql1 = "SELECT * from user where email_id = '$email' AND  password = '$password'";
     $result1 = mysqli_query($conn, $sql1);
     $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
     $count1 = mysqli_num_rows($result1);
+    // if passsword matches with the email id in the database
     if ($count1==1){
         $_SESSION['EmailId'] = $email;
         $_SESSION['Login']=1;

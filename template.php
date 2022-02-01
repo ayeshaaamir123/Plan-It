@@ -1,12 +1,9 @@
 <?php
      include 'partials/_dbconnect.php';
-    $showAlert= false;
+     $showAlert= false;
+     
      if ($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['savechanges']=='pressed'){
-         //figure out: how to get templatetype from the button clicked and how to add alerts
-        // $templateType = $_POST['template'];
-        // echo $templateType;
-
-
+         
          
         $taskcount=sizeof($_POST['taskName']);
         // checking if first task is completely filled
@@ -45,7 +42,7 @@
                     $endTask= $year.'-'.$month."-".$day;
                     
                     $taskName= $_POST['taskName'][$x-1];
-                    
+
                     //checking if all fields are filled of a particular task
                     if ($taskName!='' && $taskDescription!='' && $startTask!='' && $endTask!=''){
                         $taskID= $y ;
@@ -117,9 +114,11 @@ if($showAlert){
                     <div class="modal-body">
                         <!-- Modal Body -->
                         <form action="template.php" method="POST">
+                            <input type="text" id="templateType" name="templateType" value="" style="display: none;" >
                              <div class="form-group" >
                                 <label for="fnameEdit">Planner Name</label>
                                 <input type="text" class="form-control" name="plannerName" id="plannerName" required >
+                            
                             </div>
                             
                             Task Details
@@ -174,7 +173,9 @@ if($showAlert){
 height: 100px;background:#F299F2BF; border-radius: 0; ">
                 <div class="card-body font-theme" style="font-size: 30px; ">
                     Business Planner
-                    <button type="button" name="template" value="business" class="view" data-toggle="modal" data-target="#modal"></button>
+                    
+                    <button type="button"  name="template" value="business" class="view" data-toggle="modal" data-target="#modal"></button>
+                    
                 </div>
             </div>
             <br>
@@ -220,14 +221,16 @@ height: 100px;background:#F299F2BF; border-radius: 0; ">
             html += '<div class="input-group mb-3">';
             html+= '<input type="text" name="taskDescription[]" class="form-control m-input"  placeholder="Enter Task Description" autocomplete="off"></div>';
             html += '<div class="input-group mb-3">';
-            html+='<input type="text" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off"></div>';
+            html+='<input type="date" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off"></div>';
             html += '<div class="input-group mb-3">';
-            html+='<input type="text" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off"></div>';
+            html+='<input type="date" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off"></div>';
             
             $('#newTask').append(html);
 
             
         });
+        
+
         });
 
         

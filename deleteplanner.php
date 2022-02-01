@@ -21,4 +21,5 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
     header('Location: profile.php');
 }
+
 ?>

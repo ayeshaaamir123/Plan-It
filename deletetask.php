@@ -51,5 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
 
     }
-    header('Location: planner.php?planner_id='.$planner_id);}
+    header('Location: planner.php?planner_id='.$planner_id);
+}
 ?>

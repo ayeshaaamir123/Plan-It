@@ -3,37 +3,35 @@
 <head>
  
 <?php require '<partials/_styling.php';?>
+
+
 </head>
 <body>
     <?php require '<partials/_header.php';?>
 
     <div class="text-center font-theme">
-        <h2 style="text-align:center;font-size:40px; color:#331766; padding-top: 1rem
-    ;">
+        <h2 style="text-align:center;font-size:40px; color:#331766; padding-top: 1rem;">
          About Us
         </h2>
 
     </div>
-      <center>
-    <img src="images\office.jpg" class="img-fluid" alt="..." />
-  </center>
-  <div class="text-center font-theme">
-        <h2 style="text-align:center;font-size:20px; color:#331766; padding-top: 1rem
-    ; text-decoration: underline">
+        <center>
+         <img src="images\office.jpg" class="img-fluid" alt="..." />
+        </center>
+    <div class="text-center font-theme">
+        <h2 style="text-align:center;font-size:20px; color:#331766; padding-top: 1rem; text-decoration: underline">
          Our Objective?
         </h2>
         Help people in managing their busy lives!
     </div>
-     <div class="text-center font-theme">
-        <h2 style="text-align:center;font-size:20px; color:#331766; padding-top: 1rem
-    ; text-decoration: underline">
+    <div class="text-center font-theme">
+        <h2 style="text-align:center;font-size:20px; color:#331766; padding-top: 1rem; text-decoration: underline">
          Our Motivation?
         </h2>
         Public service
     </div>
     <div class="text-center font-theme">
-        <h2 style="text-align:center;font-size:20px; color:#331766; padding-top: 1rem
-    ; text-decoration: underline ">
+        <h2 style="text-align:center;font-size:20px; color:#331766; padding-top: 1rem; text-decoration: underline ">
          Our requirement?
         </h2>
         Only your support

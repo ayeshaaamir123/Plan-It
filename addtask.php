@@ -4,7 +4,6 @@ include 'partials/_dbconnect.php';
 session_start();
 $email_id=$_SESSION['EmailId'];
 $planner_id=$_POST['savechanges'];
-echo $planner_id;
 if ($_SERVER["REQUEST_METHOD"] == 'POST'){
     $sql1="SELECT * from `planit`.`task` where email_id = '$email_id' and planner_id='$planner_id';";
     $result=mysqli_query($conn,$sql1);
@@ -39,6 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
              
     }
 header('Location: planner.php?planner_id='.$planner_id);
-//header('Location: planner.php');
+
 }
 ?> 

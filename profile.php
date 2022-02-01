@@ -212,56 +212,6 @@
         ?>
     </div>
 
-
-    
-
-<!-- 
-        // Adds on-click listeners to every edit button which opens a modal for editing a contact
-    //     $(document).ready(function() {
-    //         $("#edit").click(function(){
-    //    var table = document.getElementsById('table'),rIndex;
-    //    for(var i=0; i<table.rows.length; i++){
-    //        table.rows[i].onclick = function(){
-    //            rIndex = this.rowIndex;
-    //            document.getElementById("fnameEdit").value= this.cells[0].innerHTML;
-    //        };
-    //     }
-    // });
-    // });
-    // $(document).ready(function() {
-    //    $("#edit").click(function(){
-    // edits = document.getElementsById('myTable');
-    //     Array.from(edits).forEach((element) => {
-    //         element.addEventListener("click", (e) => {
-    //             tr = e.target.parentNode.parentNode;
-    //             fname = tr.getElementsByTagName("td")[0].textContent;
-    //             lname = tr.getElementsByTagName("td")[1].textContent;
-    //             fnameEdit.value = fname;
-    //             lnameEdit.value = lname;
-    //             $('#editModal').modal('toggle');
-    //         });
-    //     });
-    // });
-    //     });
-        // Array.from(edits).forEach((element) => {
-        //     element.addEventListener("click", (e) => {
-        //         console.log("edit");
-        //         tr = e.target.parentNode.parentNode;
-        //         console.log(tr);
-        //         // console.log(tr.getElementsByTagName("td")[0].textContent);
-        //         fname = tr.getElementsByTagName("td")[0].textContent;
-        //         lname = tr.getElementsByTagName("td")[1].textContent;
-        //         number = tr.getElementsByTagName("td")[2].textContent;
-        //         console.log(fname,lname, numbers);
-        //         fnameEdit.value = fname;
-        //         lnameEdit.value = lname;
-        //         numberEdit.value = number;
-        //         $('#editModal').modal('toggle');
-
-        //     })
-        // }) 
-  
-  -->
  
 </body>
 

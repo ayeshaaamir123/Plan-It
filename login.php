@@ -105,10 +105,7 @@ if($showAlert2){
             </div>
             
 
-        </div>
-    
-
-    
+        </div> 
 
 
 </body>

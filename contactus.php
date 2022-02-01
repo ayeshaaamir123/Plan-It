@@ -7,11 +7,10 @@
 </head>
 <body>
     <?php require '<partials/_header.php';?>
-
     
-      <center>
-    <img src="images\office.jpg" class="img-fluid" alt="..." />
-  </center>
+         <center>
+            <img src="images\office.jpg" class="img-fluid" alt="..." />
+         </center>
   
   
   <div class="card my-3 mx-auto" style="width: 500px; border: 2px solid rgba(196, 182, 218, 0.87);">

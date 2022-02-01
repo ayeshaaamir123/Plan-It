@@ -282,11 +282,6 @@ for($x=1; $x<=$count; $x++){
 
     </script>
  
-
-
-
-   
-
 </body>
 
 

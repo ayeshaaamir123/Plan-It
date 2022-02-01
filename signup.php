@@ -2,7 +2,7 @@
 $showAlert1=false;
 $showAlert2=false;
 $showAlert3=false;
-$showAlert4=false;
+
 session_start();
 //Database connection
 include('partials/_dbconnect.php');
@@ -66,18 +66,21 @@ else{
 
 <?php require '<partials/_header.php';?>
 <?php
+
 if($showAlert1){
 echo '<div class="alert alert-danger alert-dismissible">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Error!</strong> '. $showAlert1.'
 </div>';
 }
+
 if($showAlert2){
 	echo'<div class="alert alert-danger alert-dismissible">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Error!</strong> '. $showAlert2.'
 </div>';
 }
+
 if($showAlert3){
 echo '<div class="alert alert-danger alert-dismissible">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -143,41 +146,6 @@ echo '<div class="alert alert-danger alert-dismissible">
 
 </div>
 
-    <!--- Jumbotron -->
-
-
-    <!--- Welcome Section -->
-
-
-    <!--- Three Column Section -->
-
-
-    <!--- Two Column Section -->
-
-
-    <!--- Fixed background -->
-
-
-    <!--- Emoji Section -->
-
-
-    <!--- Meet the team -->
-
-
-    <!--- Cards -->
-
-
-    <!--- Two Column Section -->
-
-
-    <!--- Connect -->
-
-
-    <!--- Footer -->
-
-
-
-
-    </body>
+</body>
 
 </html>

@@ -4,9 +4,6 @@ include 'partials/_dbconnect.php';
 session_start();
 $email_id=$_SESSION['EmailId'];
 
-//$planner_id=$_SESSION['planner_id'];
-
-
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     if(isset($_POST['edittask'])){
         $task_details=$_POST['edittask'];

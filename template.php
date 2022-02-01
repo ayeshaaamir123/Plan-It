@@ -233,8 +233,7 @@ height: 100px;background:#F299F2BF; border-radius: 0; ">
             $('#newTask').append(html);
 
             
-        });
-        
+        });   
 
         });
 

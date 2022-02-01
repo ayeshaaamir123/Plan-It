@@ -64,7 +64,7 @@
     $taskError = array();
     $taskError = explode(',', $_GET['taskError']);
     $countError=count($taskError);
-    if (($countError)!=0){                               
+    if (($countError)!=0 && $taskError[0]!=''){                               
         for ($x = 0; $x <$countError; $x++) {
            
         $showAlert='Task '.$taskError[$x].' could not be added in created planner';

@@ -276,11 +276,25 @@ for($x=1; $x<=$count; $x++){
        ';
     }
      ?>
-
-
+<?php
+    $taskdays=[];
+    for ($x=1; $x<=$count; $x++){
+        $date1= date_create($tasks[$x-1]['endTask']);
+        $date2= date_create($tasks[$x-1]['startTask']);
+        
+        $diff=date_diff($date2,$date1);
+        $diff=$diff->format("%R%a");
+        $days=intval($diff);
+        $taskdays[]=$days;
+    }
     
-
+    $piearray=[['Task','Days']];
+    for ($x=1; $x<=$count; $x++){
+        $piearray[]=[$tasks[$x-1]['taskName'], $taskdays[$x-1]];
+    }
     
+    
+ ?>
     
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
@@ -291,17 +305,12 @@ for($x=1; $x<=$count; $x++){
 
         // Draw the chart and set the chart values
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work', 8],
-                ['Eat', 2],
-                ['TV', 4],
-                ['Gym', 2],
-                ['Sleep', 8]
-            ]);
+            var piearray = <?php echo json_encode($piearray); ?>;
+            var data = google.visualization.arrayToDataTable(piearray);
 
             // Optional; add a title and set the width and height of the chart
-            var options = { 'title': 'My Average Day', 'width': 550, 'height': 400 };
+            
+            var options = { 'title': 'Planner', 'width': 550, 'height': 400 };
 
             // Display the chart inside the <div> element with id="piechart"
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));

@@ -46,36 +46,45 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 <body>
 
 <?php require '<partials/_header.php';?>
-<div class="font-theme">
-     <form action="edittask.php" method="POST">
-                             
-                            Task Details
-                            
-                            <div>
-                                <div class="col-lg-12">
-                                 
-                                    <div id="inputFormRow">
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="edittaskName" class="form-control m-input" placeholder="Enter Task Name" autocomplete="off">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="edittaskDescription" class="form-control m-input" placeholder="Enter Task Description" autocomplete="off">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input type="date" name="editstartTask" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input type="date" name="editendTask" class="form-control m-input" placeholder="Enter End Date" autocomplete="off">
-                                        </div>
-                                    
-                                    </div>
-                                </div>   
-                            </div>
-    
-                            <button type="submit" name="edittask" value=<?php echo $edit ?> class="btn btn-primary">Save changes</button>
-                           
-                        </form>
+<div class="card my-5 mx-auto" style="width: 500px; border: 2px solid rgba(196, 182, 218, 0.87);">
+    <div class="card-body" ; style="text-align:center" ;>
+        <h2 class="card-title">Edit Task</h2>
+        <form action="edittask.php" method="POST">
+        
+            Task Details
+        
+            <div>
+                <div class="col-lg-12">
+        
+                    <div id="inputFormRow">
+                        <div class="input-group mb-3 " >
+                            <input type="text" name="edittaskName" class="form-control m-input" placeholder="Enter Task Name"
+                                autocomplete="off">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="edittaskDescription" class="form-control m-input"
+                                placeholder="Enter Task Description" autocomplete="off">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="date" name="editstartTask" class="form-control m-input" placeholder="Enter Start Date"
+                                autocomplete="off">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="date" name="editendTask" class="form-control m-input" placeholder="Enter End Date"
+                                autocomplete="off">
+                        </div>
+        
                     </div>
+                </div>
+            </div>
+        
+           <button type="submit" name="edittask" value=<?php echo $edit ?> class="btn btn-primary">Save Changes</button>
+        </form>
+        
+        
+    </div>
+    </div>
+
     
         </body>
 

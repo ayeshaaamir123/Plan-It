@@ -2,9 +2,11 @@
 $showAlert1=false;
 $showAlert2=false;
 session_start();
+
 include('partials/_dbconnect.php');
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST'){
+    if(isset($_POST['login'])){
     
     $email = $_POST['EmailId'];
     $password = $_POST['Password'];
@@ -15,7 +17,7 @@ $password = stripcslashes($password);
 $email = mysqli_real_escape_string($conn, $email);
 $password = mysqli_real_escape_string($conn, $password);
 
-$sql = "SELECT * from user where email_id = '$email' ";// AND  password = '$password'";
+$sql = "SELECT * from user where email_id = '$email' ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $count = mysqli_num_rows($result);
@@ -33,17 +35,15 @@ if ($count == 1) {
 
     }else{
         $showAlert1="Password does not match with the this email id";
-        //echo "<script>alert('Password does not match with the this email id')</script>";
-        //echo "<script>location.href='login.php'</script>";
+     
 
     }
    
 } else {
-    $showAlert2="email does not exist";
-    //echo "<script>alert('email does not exist')</script>";
-    //echo "<script>location.href='login.php'</script>";
+    $showAlert2="Account does not exist";
+  
 }
-}
+}}
 ?>
 
 <!DOCTYPE html>
@@ -87,16 +87,16 @@ if($showAlert2){
                         <div class="form-group" style="padding-top: 2rem;">
 
                             <input type="email" class="form-control" id="EmailId" name="EmailId" aria-describedby="emailHelp"
-                                placeholder="Enter email">
+                                placeholder="Enter email" required>
 
                         </div>
                         
                         <div class="form-group" style="padding-top: 1rem; padding-bottom: 2rem;">
 
-                            <input type="password" class="form-control" id="Password"  name="Password" placeholder="Password">
+                            <input type="password" class="form-control" id="Password"  name="Password" placeholder="Password" required>
                         </div>
                         
-                        <button type="submit" class="btn">Login</button>
+                        <button type="submit" name="login"  value="login" class="btn">Login</button>
 
                     </form>
 

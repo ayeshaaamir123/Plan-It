@@ -26,7 +26,8 @@ $plan = mysqli_fetch_array($result);
 
 
 
-$color=['#3ed6bf','#F299F2BF','#41C357CF','#FFBF66DE'];
+$color=['#F299F2BF','#3ed6bf','#41C357CF','#FFBF66DE'];
+$buttoncolor=['#690769','#19524b', '#047216', '#A4560E'];
 
 ?>
 
@@ -41,7 +42,7 @@ $color=['#3ed6bf','#F299F2BF','#41C357CF','#FFBF66DE'];
 
 <body>
 
-<?php require '<partials/_header.php';?>
+<?php require '<partials/_header2.php';?>
 <?php 
 for($x=1; $x<=$count; $x++){
     $today = date("Y-m-d");
@@ -61,61 +62,7 @@ for($x=1; $x<=$count; $x++){
 ?>
 
 
-    <!-- edit modal -->
-    <div class="font-theme">
-      <div class="modal fade" id="#modaledittask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit task</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                     </button>
-                      
-                    </div>
-                    <div class="modal-body">
-                        <!-- Modal Body -->
-                        <form action="edittask.php" method="POST">
-                             
-                            Task Details
-                            
-                            <div>
-                                <div class="col-lg-12">
-                                 
-                                    <div id="inputFormRow">
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="edittaskName" class="form-control m-input" placeholder="Enter Task Name" autocomplete="off">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="edittaskDescription" class="form-control m-input" placeholder="Enter Task Description" autocomplete="off">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input type="date" name="editstartTask" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <input type="date" name="editendTask" class="form-control m-input" placeholder="Enter End Date" autocomplete="off">
-                                        </div>
-                                    
-                                    </div>
-                                </div>   
-                            </div>
-    
-                            <button type="submit" name="edittask" value=<?php echo $_POST['edittask'] ?> class="btn btn-primary">Save changes</button>
-                           
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal">Close</button>
-         
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    <!-- add task -->
+     <!-- add task -->
       <div class="modal fade" id="modaladdtask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
 
@@ -139,21 +86,20 @@ for($x=1; $x<=$count; $x++){
                                     Task 
                                     <div id="inputFormRow">
                                         <div class="input-group mb-3">
-                                            <input type="text" name="taskName[]" class="form-control m-input" placeholder="Enter Task Name" autocomplete="off">
+                                            <input type="text" name="taskName[]" class="form-control m-input" placeholder="Enter Task Name" autocomplete="off" required>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" name="taskDescription[]" class="form-control m-input" placeholder="Enter Task Description" autocomplete="off">
+                                            <input type="text" name="taskDescription[]" class="form-control m-input" placeholder="Enter Task Description" autocomplete="off" required>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="date" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off">
+                                            <input type="date" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off" required>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="date" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off">
+                                            <input type="date" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off" required>
                                         </div>
                                     </div>
-                                    <div id="newTask"></div>
-                                    <button id="addTask" type="button" class="btn btn-info">Add Task</button>
-                                </div>
+                                    </div>
+                                   
                             </div>
     
                             <button type="submit" name="savechanges" value='<?php echo $planner_id; ?>' class="btn btn-primary">Save changes</button>
@@ -205,14 +151,21 @@ for($x=1; $x<=$count; $x++){
         echo '
         <!--TASK BAR -->
         <div class="container2 p-2 d-flex flex-row justify-content" style="margin: auto;">';
+        $c=0;
         for ($x=1; $x <= $count; $x++){
+            
+            $c=$c+1;
+           
             echo ' <div class="p-2">
-                        <div class="container-taskbar ">'.$tasks[$x-1]['taskName'].'</div>
+                        <div class="container-taskbar" style="background:'.$color[$c-1].';">'.$tasks[$x-1]['taskName'].'</div>
                         <div class="d-flex flex-row justify-content-between " style=" width: 200px; margin: auto;">
                                 <div class="p-2">'.$tasks[$x-1]['startTask'].'</div>
                                 <div class="p-2" >'.$tasks[$x-1]['endTask'].'</div>
                         </div>
                     </div>';
+            if ($c==sizeof($color) && $x<=$count){
+             $c=0;
+               };
         }
            
        echo'</div>';
@@ -221,9 +174,10 @@ for($x=1; $x<=$count; $x++){
     <div class= "p-2 d-flex" style="padding-top: 4rem;">
         <!-- TASKS -->
         <div class="p-2">';
-
+        $c=0;
         for ($x=1; $x <= $count; $x++){
-        echo' <div class="card" style="width:500px;height: 180px;left: 4rem; border-radius: 20;background: linear-gradient(180deg, #3ED6BF 0%, rgba(62, 214, 191, 0.8) 100%);" >
+        $c=$c+1;
+        echo' <div class="card" style="width:500px;height: 180px;left: 4rem; border-radius: 20;background:'.$color[$c-1].';" >
                 <div class="card-body">
                     <div class= "d-flex felx-row justify-content-between">
                         <h5 class="card-title p-2"> '.$tasks[$x-1]['taskName'].'</h5>
@@ -236,19 +190,24 @@ for($x=1; $x<=$count; $x++){
                     <div class="btn-group"role="group" aria-label="Basic example" >
                     
                     <form action="deletetask.php" method="POST">
-                         <button type="submit" class="btn btn-secondary" name="donetask" value='.$tasks[$x-1]['taskID'].'/'.$planner_id.' style="background: #19524b; ">Done</button>
+                         <button type="submit" class="btn btn-secondary" style="background:'.$buttoncolor[$c-1].'; border:'.$buttoncolor[$c-1].'; " name="donetask" value='.$tasks[$x-1]['taskID'].'/'.$planner_id.' style="background: #19524b; ">Done</button>
                         
-                         <button type="submit" class="btn btn-secondary" name="deletetask" value='.$tasks[$x-1]['taskID'].'/'.$planner_id.'  style="background: #19524b; ">Delete</button>
-                    </form>
-                    <form action="edittask.php"   method="POST">
+                         <button type="submit" class="btn btn-secondary" style="background:'.$buttoncolor[$c-1].'; border:'.$buttoncolor[$c-1].'; " name="deletetask" value='.$tasks[$x-1]['taskID'].'/'.$planner_id.'  style="background: #19524b; ">Delete</button>
+                    </form>';
+                  
+                   echo ' <form action="edittask.php"   method="POST">
                       
-                        <button type="submit" class="btn btn-secondary" id="#edittask" name="edittasks" value='.$tasks[$x-1]['taskID'].'/'.$planner_id.' style="background: #19524b; ">Edit</button>
+                        <button type="submit" class="btn btn-secondary" style="background:'.$buttoncolor[$c-1].'; border:'.$buttoncolor[$c-1].'; " id="#edittask" name="edittasks" value='.$tasks[$x-1]['taskID'].'/'.$planner_id.' style="background: #19524b; ">Edit</button>
                     </form>    
                     
                     </div>
                 </div>
             </div>
             <br>';
+
+            if ($c==sizeof($color) && $x<=$count){
+                $c=0;
+                  };
         }
       
         echo '</div>
@@ -326,32 +285,7 @@ for($x=1; $x<=$count; $x++){
 
 
 
-    <script type="text/javascript">
-    // Adding new task input fields as user clicks Add Task button
-    $(document).ready(function() {
-        $("#addTask").click(function () {
-            
-            var html = '';
-            html+= 'Task';
-            html += '<div id="inputFormRow">';
-            html += '<div class="input-group mb-3">';
-            html += '<input type="text" name="taskName[]" class="form-control m-input" placeholder="Enter Task Name" autocomplete="off"></div>';
-            html += '<div class="input-group mb-3">';
-            html+= '<input type="text" name="taskDescription[]" class="form-control m-input"  placeholder="Enter Task Description" autocomplete="off"></div>';
-            html += '<div class="input-group mb-3">';
-            html+='<input type="date" name="startTask[]" class="form-control m-input" placeholder="Enter Start Date" autocomplete="off"></div>';
-            html += '<div class="input-group mb-3">';
-            html+='<input type="date" name="endTask[]" class="form-control m-input" placeholder="Enter End Date" autocomplete="off"></div>';
-            
-            $('#newTask').append(html);
-
-            
-        });
-    
-        });
-
-        
-    </script>
+   
 
 </body>
 

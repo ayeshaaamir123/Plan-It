@@ -2,6 +2,7 @@
      include 'partials/_dbconnect.php';
      session_start();
      $email_id=$_SESSION['EmailId'];
+     $_SESSION['Login']=0;
      $showAlert= false;
      $taskerror =array();
   
@@ -15,7 +16,7 @@
             
         
             $plannerName= $_POST['plannerName'];
-            $sql4= "SELECT * from `planit`.`planner` where plannerName = '$plannerName';";
+            $sql4= "SELECT * from `planit`.`planner` where plannerName = '$plannerName' and email_id = '$email_id';";
             $result2= mysqli_query($conn, $sql4);
             $count_planner= mysqli_num_rows($result2);
             if ($count_planner==0){
@@ -89,7 +90,7 @@
 <body>
 
 
-<?php require '<partials/_header.php';?>
+<?php require '<partials/_header2.php';?>
 <?php
 if($showAlert){
     echo '<div class="alert alert-info alert-dismissible fade show" role="alert">

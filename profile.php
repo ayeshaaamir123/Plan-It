@@ -62,7 +62,7 @@
 <body>
 
 
-    <?php require '<partials/_header.php';
+    <?php require '<partials/_header2.php';
   if ($login==0) {
     $taskError = array();
     $taskError = explode(',', $_GET['taskError']);

@@ -35,18 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST'){
             mysqli_query($conn,$sql3);
             $taskID+=1;
                         
-        }
-        else{
-                    
-            $showAlert="Task ". $x." could not be added to the planner.";
-                        
-        }
+        }  
              
     }
 header('Location: planner.php?planner_id='.$planner_id);
 //header('Location: planner.php');
 }
-
-
-
 ?> 

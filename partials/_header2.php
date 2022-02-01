@@ -18,7 +18,7 @@
             
 
 		</ul>
-		<div class="nav-item" style=" margin-left:49rem">
+		<div class="nav-item" style=" margin-left:50rem">
 			<form method="POST" action="logout.php">
 				    <button type="submit" class="btn">Logout</button>
                 </form>

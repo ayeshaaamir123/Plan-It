@@ -216,7 +216,7 @@ for($x=1; $x<=$count; $x++){
     
   <!-- PIE CHART -->
         <div class="chart p-2">
-            <h1>Pie chart View</h1>
+            <h1>Pie chart View </h1>
     
             <div id="piechart"></div>
         </div>

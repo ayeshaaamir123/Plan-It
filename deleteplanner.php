@@ -3,6 +3,7 @@ include 'partials/_dbconnect.php';
 
 session_start();
 $email_id=$_SESSION['EmailId'];
+$_SESSION['Login']=1;
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $planner_id= $_POST['deleteplanner'];
     //getting all planners of the particular user

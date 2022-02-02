@@ -5,13 +5,11 @@ body {
   height: 100%;
   margin: 0;
 }
-.task-date {
-  display: flex;
-}
+
 .container-taskbar {
   display: flex;
   justify-content: center;
-  width: 200px;
+
   height: 36px;
   left: 37px;
   top: 179px;
@@ -35,7 +33,6 @@ body {
 .navbar {
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  position: sticky;
 }
 
 .chart {
@@ -44,20 +41,15 @@ body {
   flex-direction: column;
   align-items: center;
 
-  position: absolute;
-  width: 511px;
-  height: 639px;
-  left: 55%;
+  /* width: 511px;
+  height: 639px; */
+  left: 10%;
   /* left: calc(50% - 511px / 2 + 392px); */
 
   /* top: calc(50% - 639px / 2 + 172.5px); */
 
   /* white */
 
-  background: #ffffff;
-  /* shadow-base */
-
-  box-shadow: 0px 1px 2px rgba(31, 41, 55, 0.08);
   border-radius: 8px;
 }
 
@@ -175,20 +167,3 @@ figure {
 [class*="col-"] {
   padding: 1rem;
 }
-
-/*
-Extra small (xs) devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap
-
-Small (sm) devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
-
-Medium (md) devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-Large (lg) devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-Extra (xl) large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-*/
